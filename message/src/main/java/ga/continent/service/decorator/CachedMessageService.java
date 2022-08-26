@@ -1,7 +1,7 @@
 package ga.continent.service.decorator;
 
 import com.google.gson.Gson;
-import ga.continent.api.dto.ChannelsDto;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.dto.MessageCreateDto;
 import ga.continent.api.dto.MessageReadDto;
 import ga.continent.api.util.CacheHelper;
@@ -41,7 +41,7 @@ public class CachedMessageService implements MessageService {
     }
 
     @Override
-    public List<MessageReadDto> findForChannels(ChannelsDto userChannelDto) {
+    public List<MessageReadDto> findForChannels(UserChannelsDto userChannelDto) {
         if(!Objects.isNull(messagesCache.get(userChannelDto.getUserId()))) {
             final MessageReadDto[] messagesReadDto = gson.fromJson(messagesCache.get(userChannelDto.getUserId(), String.class), MessageReadDto[].class);
             return List.of(messagesReadDto);

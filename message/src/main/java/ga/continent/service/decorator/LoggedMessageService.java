@@ -1,11 +1,10 @@
 package ga.continent.service.decorator;
 
-import ga.continent.api.dto.ChannelsDto;
 import ga.continent.api.dto.MessageCreateDto;
 import ga.continent.api.dto.MessageReadDto;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.service.interfaces.MessageService;
 import ga.continent.store.entity.MessageEntity;
-import ga.message.grpc.UserRequest;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -24,7 +23,7 @@ public class LoggedMessageService implements MessageService {
     MessageService cachedMessageService;
 
     @Override
-    public List<MessageReadDto> findForChannels(ChannelsDto userChannelDto) {
+    public List<MessageReadDto> findForChannels(UserChannelsDto userChannelDto) {
         log.info("Messages for user:" + userChannelDto.getUserId());
         return cachedMessageService.findForChannels(userChannelDto);
     }

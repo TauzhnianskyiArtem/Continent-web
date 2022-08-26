@@ -11,7 +11,7 @@ spring:
         - id: message
           uri: lb://message
           predicates:
-            - Path=/message
+            - Path=/message/**
         - id: web
           uri: lb://main
           predicates:

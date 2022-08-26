@@ -1,6 +1,6 @@
 package ga.continent.service.implementation;
 
-import ga.continent.api.dto.ChannelsDto;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.dto.MessageCreateDto;
 import ga.continent.api.dto.MessageReadDto;
 import ga.continent.api.mapper.MessageCreateMapper;
@@ -33,7 +33,7 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public List<MessageReadDto> findForChannels(ChannelsDto userChannelDto) {
+    public List<MessageReadDto> findForChannels(UserChannelsDto userChannelDto) {
         var usersId = userChannelDto.getChannelsId();
         usersId.add(userChannelDto.getUserId());
         var sortBy = Sort.sort(MessageEntity.class);

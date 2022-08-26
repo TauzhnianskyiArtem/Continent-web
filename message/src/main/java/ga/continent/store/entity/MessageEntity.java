@@ -33,6 +33,7 @@ public class MessageEntity extends AuditingEntity {
     UserEntity author;
 
     @NotAudited
+    @Builder.Default
     @OneToMany(mappedBy = "message", orphanRemoval = true)
     List<CommentEntity> comments = new ArrayList<>();
 

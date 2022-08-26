@@ -2,7 +2,6 @@ package ga.continent.api.util;
 
 import com.google.gson.Gson;
 import ga.continent.api.dto.MessageReadDto;
-import ga.message.grpc.MessageRead;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

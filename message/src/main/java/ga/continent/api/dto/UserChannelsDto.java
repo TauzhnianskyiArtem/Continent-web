@@ -1,13 +1,13 @@
 package ga.continent.api.dto;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@Builder
-public class UserChannelDto {
+@NoArgsConstructor
+public class UserChannelsDto {
     String userId;
     List<String> channelsId;
 }

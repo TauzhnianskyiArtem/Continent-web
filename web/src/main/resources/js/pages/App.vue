@@ -79,15 +79,13 @@ export default {
           else
             console.error(`Looks like the event type if unknown "${data.eventType}"`)
         } else if (data.objectType === "COMMENT") {
-          console.log(this.messages)
           const indMessage = this.messages.findIndex(item => item.id === data.body.message)
-          console.log(indMessage)
           if (indMessage > -1) {
             if (data.eventType === 'CREATE') {
               const comments = this.messages[indMessage].comments
-              console.log(comments)
+              if(comments === null)
+                return
               const indComment = comments.findIndex(item => item.id === data.body.id)
-              console.log(indComment)
               if (indComment > -1) {
                 comments.splice(indComment, 1, data.body)
               } else {

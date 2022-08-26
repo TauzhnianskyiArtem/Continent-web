@@ -35,7 +35,6 @@ export default {
       commentsApi.add(comment)
           .then(result =>
               result.json().then(data => {
-
                 const index = this.comments.findIndex(item => item.id === data.id)
                 if (index > -1)
                   this.comments.splice(index, 1, data)

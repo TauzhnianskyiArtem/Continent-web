@@ -5,7 +5,7 @@
         <div class="title mb-3">User profile</div>
         <v-layout row justify-space-between>
           <v-flex class="px-1">
-            <v-img :src="profile.userpic" :alt="profile.name"></v-img>>
+            <v-img :src="profile.userpic" :alt="profile.name"></v-img>
           </v-flex>
           <v-flex class="px-1">
             <v-layout column>

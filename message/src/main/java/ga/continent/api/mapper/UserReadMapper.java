@@ -2,7 +2,6 @@ package ga.continent.api.mapper;
 
 import ga.continent.api.dto.UserReadDto;
 import ga.continent.store.entity.UserEntity;
-import ga.message.grpc.MessageRead;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -31,22 +30,4 @@ public class UserReadMapper implements Mapper<UserReadDto, UserEntity> {
                 .name(object.getName())
                 .build();
     }
-
-    public MessageRead.UserRead mapToUserRead(UserEntity object) {
-        return MessageRead.UserRead.newBuilder()
-                .setId(object.getId())
-                .setUserpic(object.getUserpic())
-                .setName(object.getName())
-                .build();
-    }
-
-    public MessageRead.UserRead mapToUserRead(UserReadDto object) {
-        return MessageRead.UserRead.newBuilder()
-                .setId(object.getId())
-                .setUserpic(object.getUserpic())
-                .setName(object.getName())
-                .build();
-    }
-
-
 }

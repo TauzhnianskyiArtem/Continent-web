@@ -1,6 +1,6 @@
 package ga.continent.service.interfaces;
 
-import ga.continent.api.dto.ChannelsDto;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.dto.MessageCreateDto;
 import ga.continent.api.dto.MessageReadDto;
 import ga.continent.store.entity.MessageEntity;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface MessageService {
 
-    List<MessageReadDto> findForChannels(ChannelsDto userChannelDto);
+    List<MessageReadDto> findForChannels(UserChannelsDto userChannelDto);
 
     Optional<MessageReadDto> updateMessage(String messageId, MessageCreateDto message);
 

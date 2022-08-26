@@ -2,7 +2,6 @@ package com.onpu.web.service.implementation;
 
 import com.google.gson.Gson;
 import com.onpu.web.api.dto.*;
-import com.onpu.web.api.mapper.MessageReadMapper;
 import com.onpu.web.config.TopicsProperties;
 import com.onpu.web.service.feignclient.MessageFeignClient;
 import com.onpu.web.service.interfaces.MessageService;
@@ -29,8 +28,6 @@ public class MessageServiceImpl implements MessageService {
 
     TopicsProperties topicsProperties;
 
-    MessageReadMapper messageReadMapper;
-
     MetaContentService metaContentService;
 
     MessageFeignClient messageFeignClient;
@@ -42,10 +39,9 @@ public class MessageServiceImpl implements MessageService {
     UserSubscriptionRepository userSubscriptionRepository;
 
 
-    public MessageServiceImpl(Gson gson, TopicsProperties topicsProperties, MessageReadMapper messageReadMapper, MetaContentService metaContentService, MessageFeignClient messageFeignClient, KafkaTemplate<String, String> kafkaTemplate, UserSubscriptionRepository userSubscriptionRepository, WsSender wsSender) {
+    public MessageServiceImpl(Gson gson, TopicsProperties topicsProperties, MetaContentService metaContentService, MessageFeignClient messageFeignClient, KafkaTemplate<String, String> kafkaTemplate, UserSubscriptionRepository userSubscriptionRepository, WsSender wsSender) {
         this.gson = gson;
         this.topicsProperties = topicsProperties;
-        this.messageReadMapper = messageReadMapper;
         this.metaContentService = metaContentService;
         this.messageFeignClient = messageFeignClient;
         this.kafkaTemplate = kafkaTemplate;
@@ -60,7 +56,7 @@ public class MessageServiceImpl implements MessageService {
         List<UserEntity> channels = userSubscriptionRepository.findBySubscriber(userEntity.getId());
         List<String> channelsId = channels.stream().map(UserEntity::getId).collect(Collectors.toList());
 
-        return messageFeignClient.findForChannels(new ChannelsDto(userEntity.getId(), channelsId));
+        return messageFeignClient.findForChannels(new UserChannelsDto(userEntity.getId(), channelsId));
 
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Value
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ChannelsDto {
+public class UserChannelsDto {
     String userId;
     List<String> channelsId;
 }

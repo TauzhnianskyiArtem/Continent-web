@@ -1,7 +1,7 @@
 package ga.continent.api.controller;
 
 
-import ga.continent.api.dto.ChannelsDto;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.dto.MessageReadDto;
 import ga.continent.service.interfaces.MessageService;
 import lombok.AccessLevel;
@@ -24,8 +24,8 @@ public class MessageController {
 
 
     @PostMapping("/channels")
-    public List<MessageReadDto> findForChannels(@RequestBody ChannelsDto channelsDto) {
+    public List<MessageReadDto> findForChannels(@RequestBody UserChannelsDto userChannelsDto) {
 
-        return loggedMessageService.findForChannels(channelsDto);
+        return loggedMessageService.findForChannels(userChannelsDto);
     }
 }

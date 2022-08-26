@@ -4,7 +4,6 @@ import ga.continent.api.dto.CommentDto;
 import ga.continent.service.interfaces.UserService;
 import ga.continent.store.entity.CommentEntity;
 import ga.continent.store.entity.UserEntity;
-import ga.message.grpc.MessageRead;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -43,26 +42,5 @@ public class CommentCreateMapper implements Mapper<CommentDto, CommentEntity> {
                 .build();
     }
 
-    public MessageRead.Comment mapToComment(CommentEntity object) {
-        return MessageRead.Comment
-                .newBuilder()
-                .setId(object.getId())
-                .setText(object.getText())
-                .setMessage(object.getMessage().getId())
-                .setAuthor(userReadMapper.mapToUserRead(object.getAuthor()))
-                .setTimestamp(object.getTimestamp())
-                .build();
-    }
-
-    public MessageRead.Comment mapToComment(CommentDto object) {
-        return MessageRead.Comment
-                .newBuilder()
-                .setId(object.getId())
-                .setText(object.getText())
-                .setMessage(object.getMessage())
-                .setAuthor(userReadMapper.mapToUserRead(object.getAuthor()))
-                .setTimestamp(object.getTimestamp())
-                .build();
-    }
 
 }
