@@ -1,0 +1,41 @@
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: message
+  datasource:
+    url: jdbc:postgresql://localhost:5444/message-db
+    username: admin
+    password: admin
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl.auto: update
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: consumer-id
+      auto-offset-reset: earliest
+
+topics:
+  user: user-info-topic
+  message: message-topic
+  comment: comment-topic
+  subscriber: subscriber-topic
+
+grpc:
+  enableReflection: true
+  enabled: true
+  security:
+    cert-chain: classpath:certificate.pem
+    private-key: classpath:cert.key
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+server:
+  port: 9090
