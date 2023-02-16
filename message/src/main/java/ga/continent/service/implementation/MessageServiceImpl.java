@@ -1,8 +1,8 @@
 package ga.continent.service.implementation;
 
-import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.dto.MessageCreateDto;
 import ga.continent.api.dto.MessageReadDto;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.mapper.MessageCreateMapper;
 import ga.continent.api.mapper.MessageReadMapper;
 import ga.continent.service.interfaces.MessageService;

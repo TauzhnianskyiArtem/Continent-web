@@ -4,12 +4,27 @@
       <v-flex :xs6="!$vuetify.breakpoint.xsOnly">
         <div class="title mb-3">User profile</div>
         <v-layout row justify-space-between>
-          <v-flex class="px-1">
+          <v-flex class="px-3">
             <v-img :src="profile.userpic" :alt="profile.name"></v-img>
           </v-flex>
           <v-flex class="px-1">
             <v-layout column>
-              <v-flex>{{ profile.name }}</v-flex>
+              <v-flex v-if="isMyProfile">
+                <v-layout row>
+                  <v-flex class="px-1">
+                    <v-text-field
+                        solo
+                        v-model="profile.name"
+                    />
+                  </v-flex>
+                  <v-flex class="px-2">
+                    <v-btn @click="changeName">
+                      Change name
+                    </v-btn>
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+              <v-flex v-else>{{ profile.name }}</v-flex>
               <v-flex>{{ profile.locale }}</v-flex>
               <v-flex>{{ profile.lastVisit }}</v-flex>
               <v-flex>
@@ -26,22 +41,6 @@
               >
                 {{ profile.subscribers && profile.subscribers.length }} subscribers
               </v-flex>
-              <v-flex v-if="isMyProfile">
-                <v-btn
-                    class="mt-5"
-                    @click="handleImageImport"
-                >
-                  Change Image
-                </v-btn>
-                <input
-                    ref="uploader"
-                    class="d-none"
-                    type="file"
-                    name="image"
-                    id="image"
-                    accept="image/*"
-                    @change="changePhoto">
-              </v-flex>
             </v-layout>
           </v-flex>
         </v-layout>
@@ -52,6 +51,22 @@
         >
           {{ isISubscribed ? 'Unsubscribe' : 'Subscribe' }}
         </v-btn>
+        <v-flex v-else>
+          <v-btn
+              class="mt-5"
+              @click="handleImageImport"
+          >
+            Change Image
+          </v-btn>
+          <input
+              ref="uploader"
+              class="d-none"
+              type="file"
+              name="image"
+              id="image"
+              accept="image/*"
+              @change="changePhoto">
+      </v-flex>
       </v-flex>
     </v-layout>
   </v-container>
@@ -60,6 +75,7 @@
 <script>
 import Vue from "vue";
 import {setSrcUserpic} from "../util/handleImage";
+
 export default {
   name: 'Profile',
   data() {
@@ -91,7 +107,11 @@ export default {
       Vue.http.post(`/api/profile/change-subscription/${this.profile.id}`).then(result =>
           result.json().then(data => {
             this.profile = data
+            this.profile.userpic = setSrcUserpic(this.profile)
           }))
+    },
+    changeName() {
+
     },
     handleImageImport() {
       this.isSelecting = true;

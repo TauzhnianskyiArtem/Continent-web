@@ -25,6 +25,7 @@
 
 <script>
 import YouTube from './YouTube.vue'
+
 export default {
   name: 'Media',
   components: { YouTube },

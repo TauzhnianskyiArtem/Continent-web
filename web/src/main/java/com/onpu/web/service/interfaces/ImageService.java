@@ -1,7 +1,5 @@
 package com.onpu.web.service.interfaces;
 
-import lombok.SneakyThrows;
-
 import java.io.InputStream;
 import java.util.Optional;
 

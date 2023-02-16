@@ -43,10 +43,7 @@ public class MetaContentServiceImpl implements MetaContentService {
             if (matcher.find()) {
                 message.setLinkCover(url);
             } else if (!url.contains("youtu")) {
-                MetaDto meta = null;
-                meta = getMeta(url);
-
-
+                MetaDto meta = getMeta(url);
                 message.setLinkCover(meta.getCover());
                 message.setLinkTitle(meta.getTitle());
                 message.setLinkDescription(meta.getDescription());

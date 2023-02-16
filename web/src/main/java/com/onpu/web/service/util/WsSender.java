@@ -19,7 +19,6 @@ public class WsSender {
     SimpMessagingTemplate template;
     Gson gson;
 
-
     public <T> BiConsumer<EventType, T> getSender(ObjectType objectType) {
 
         return (EventType eventType, T payload) -> {

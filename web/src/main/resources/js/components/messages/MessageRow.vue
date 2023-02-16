@@ -29,7 +29,7 @@ import CommentList from "components/comments/CommentList.vue"
 import UserLink from "components/UserLink.vue"
 import Media from 'components/media/Media.vue'
 
-    export default {
+export default {
         props: ['message', 'editMessage', 'deleteMessage', 'messages'],
         components: {CommentList, UserLink, Media},
         data() {

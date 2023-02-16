@@ -1,11 +1,11 @@
 package ga.continent.service.decorator;
 
 import com.google.gson.Gson;
-import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.dto.MessageCreateDto;
 import ga.continent.api.dto.MessageReadDto;
-import ga.continent.api.util.CacheHelper;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.service.interfaces.MessageService;
+import ga.continent.service.util.CacheHelper;
 import ga.continent.store.entity.MessageEntity;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

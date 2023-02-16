@@ -1,4 +1,4 @@
-package ga.continent.api.util;
+package ga.continent.service.util;
 
 import com.google.gson.Gson;
 import ga.continent.api.dto.MessageReadDto;

@@ -3,7 +3,7 @@ package com.onpu.web.service.implementation;
 import com.google.gson.Gson;
 import com.onpu.web.api.dto.*;
 import com.onpu.web.config.TopicsProperties;
-import com.onpu.web.service.feignclient.MessageFeignClient;
+import com.onpu.web.service.feignclient.MessageFacade;
 import com.onpu.web.service.interfaces.MessageService;
 import com.onpu.web.service.interfaces.MetaContentService;
 import com.onpu.web.service.util.WsSender;
@@ -30,7 +30,7 @@ public class MessageServiceImpl implements MessageService {
 
     MetaContentService metaContentService;
 
-    MessageFeignClient messageFeignClient;
+    MessageFacade messageFacade;
 
     KafkaTemplate<String, String> kafkaTemplate;
 
@@ -39,11 +39,11 @@ public class MessageServiceImpl implements MessageService {
     UserSubscriptionRepository userSubscriptionRepository;
 
 
-    public MessageServiceImpl(Gson gson, TopicsProperties topicsProperties, MetaContentService metaContentService, MessageFeignClient messageFeignClient, KafkaTemplate<String, String> kafkaTemplate, UserSubscriptionRepository userSubscriptionRepository, WsSender wsSender) {
+    public MessageServiceImpl(Gson gson, TopicsProperties topicsProperties, MetaContentService metaContentService, MessageFacade messageFacade, KafkaTemplate<String, String> kafkaTemplate, UserSubscriptionRepository userSubscriptionRepository, WsSender wsSender) {
         this.gson = gson;
         this.topicsProperties = topicsProperties;
         this.metaContentService = metaContentService;
-        this.messageFeignClient = messageFeignClient;
+        this.messageFacade = messageFacade;
         this.kafkaTemplate = kafkaTemplate;
         this.userSubscriptionRepository = userSubscriptionRepository;
         this.wsSender = wsSender.getSender(ObjectType.MESSAGE);
@@ -56,7 +56,7 @@ public class MessageServiceImpl implements MessageService {
         List<UserEntity> channels = userSubscriptionRepository.findBySubscriber(userEntity.getId());
         List<String> channelsId = channels.stream().map(UserEntity::getId).collect(Collectors.toList());
 
-        return messageFeignClient.findForChannels(new UserChannelsDto(userEntity.getId(), channelsId));
+        return messageFacade.findForChannels(new UserChannelsDto(userEntity.getId(), channelsId));
 
     }
 

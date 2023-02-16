@@ -10,10 +10,19 @@
       <v-btn text
              v-if="profile"
              :disabled="$route.path === '/'"
-             @click="showMessages"
+             @click="showMyMessages"
              class="ml-5"
       >
-        Messages
+        My messages
+      </v-btn>
+      <v-spacer></v-spacer>
+      <v-btn text
+             v-if="profile"
+             :disabled="$route.path === '/messages'"
+             @click="showUsersMessages"
+             class="ml-5"
+      >
+        Users messages
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn text
@@ -49,8 +58,11 @@ import {addHandler} from "../util/ws";
 
 export default {
   methods: {
-    showMessages() {
+    showMyMessages() {
       this.$router.push('/')
+    },
+    showUsersMessages() {
+      this.$router.push('/messages')
     },
     showProfile() {
       this.$router.push('/user')
@@ -104,7 +116,7 @@ export default {
   },
   beforeMount() {
     if (!this.profile) {
-      this.$router.replace('/auth')
+      this.$router.push('/auth')
     }
   }
 }

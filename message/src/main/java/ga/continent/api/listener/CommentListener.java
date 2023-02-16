@@ -1,4 +1,4 @@
-package ga.continent.service.listener;
+package ga.continent.api.listener;
 
 import com.google.gson.Gson;
 import ga.continent.api.dto.CommentDto;

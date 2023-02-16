@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5444/continent-db
+    username: admin
+    password: admin
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl.auto: update
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${clientId}
+            clientSecret: ${clientSecret}
+            redirectUri: http://localhost:8080/login/oauth2/code/google
+            scope: openid,email,profile
+  kafka:
+    bootstrap-servers: localhost:29092
+  session:
+    jdbc:
+      initialize-schema: always
+      table-name: SPRING_SESSION
+      schema: classpath:session_tables.sql
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+
+springdoc:
+  swagger-ui:
+    oauth:
+      clientId: ${clientId}
+      clientSecret: ${clientSecret}
+      scopes: openid,email,profile
+    oauth2-redirect-url: http://localhost:8080/swagger-ui/oauth2-redirect.html
+
+
+server:
+  port: 8080
+
+
+topics:
+  user: user-info-topic
+  message: message-topic
+  comment: comment-topic
+  subscriber: subscriber-topic
+
+gateway:
+  url: http://localhost:9000/message/api/v1/messages
+
+openApi:
+  authorizationUrl: http://localhost:8080/oauth2/authorization/google
+  tokenUrl: https://www.googleapis.com/oauth2/v4/token
+

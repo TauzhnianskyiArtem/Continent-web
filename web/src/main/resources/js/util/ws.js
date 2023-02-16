@@ -1,12 +1,12 @@
 import SockJS from 'sockjs-client'
-import { Stomp } from '@stomp/stompjs'
+import {Stomp} from '@stomp/stompjs'
 
 
 let stompClient = null
 const handlers = []
 
 export function connect(params) {
-    const socket = new SockJS('http://localhost:9000/websocket')
+    const socket = new SockJS('http://localhost:8080/websocket')
     stompClient = Stomp.over(socket)
     stompClient.connect({}, frame => {
         console.log('Connected: ' + frame)

@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
 
@@ -19,5 +17,37 @@ class UserServiceImplTest {
 
     @Test
     void create() {
+    }
+
+    @Test
+    void testFindById() {
+    }
+
+    @Test
+    void getById() {
+    }
+
+    @Test
+    void getOauthUser() {
+    }
+
+    @Test
+    void getProfile() {
+    }
+
+    @Test
+    void testGetAllUsers() {
+    }
+
+    @Test
+    void testCreate() {
+    }
+
+    @Test
+    void uploadAvatar() {
+    }
+
+    @Test
+    void findAvatar() {
     }
 }

@@ -1,8 +1,8 @@
 package com.onpu.web.api.controller;
 
 import com.onpu.web.api.dto.UserReadDto;
-import com.onpu.web.service.oauth2.OAuth2User;
 import com.onpu.web.service.interfaces.UserService;
+import com.onpu.web.service.oauth2.OAuth2User;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

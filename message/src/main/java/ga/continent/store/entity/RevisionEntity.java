@@ -28,8 +28,5 @@ public class RevisionEntity {
     @RevisionTimestamp
     Long timestamp;
 
-    String userId;
-
-    String username;
 
 }

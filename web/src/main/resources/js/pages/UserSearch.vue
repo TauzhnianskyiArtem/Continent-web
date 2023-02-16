@@ -30,8 +30,6 @@ export default {
   },
   computed: {
     filteredUsers() {
-      if (this.prefixName === '')
-        return this.users
       return this.users.filter(user => user.name.toLowerCase().includes(this.prefixName.toLowerCase()))
     }
   },

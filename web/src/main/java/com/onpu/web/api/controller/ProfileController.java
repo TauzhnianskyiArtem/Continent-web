@@ -2,9 +2,9 @@ package com.onpu.web.api.controller;
 
 import com.onpu.web.api.dto.ProfileReadDto;
 import com.onpu.web.api.dto.SubscriptionReadDto;
-import com.onpu.web.service.oauth2.OAuth2User;
 import com.onpu.web.service.interfaces.SubscriptionService;
 import com.onpu.web.service.interfaces.UserService;
+import com.onpu.web.service.oauth2.OAuth2User;
 import com.onpu.web.store.entity.UserEntity;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -78,7 +78,7 @@ public class ProfileController {
         loggedUserService.uploadAvatar(image, user);
     }
 
-    @GetMapping(value = "/avatar/{id}/avatar")
+    @GetMapping(value = "/{id}/avatar")
     public ResponseEntity<byte[]> findAvatar(@PathVariable("id") String id) {
         return loggedUserService.findAvatar(id)
                 .map(content -> ResponseEntity.ok()

@@ -18,6 +18,7 @@
 
 <script>
 import UserLink from "components/UserLink.vue";
+
 export default {
   name: 'CommentItem',
   components: {UserLink},

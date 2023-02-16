@@ -1,7 +1,6 @@
 package com.onpu.web.service.implementation;
 
 import com.onpu.web.service.interfaces.ImageService;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

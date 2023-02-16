@@ -1,7 +1,7 @@
 <template>
   <v-container>
 
-    <div class="d-flex align-start flex-column">Необходимо авторизоваться через:
+    <div class="d-flex align-start flex-column">Need to login with:
       <v-btn
           href="/oauth2/authorization/google"
           depressed

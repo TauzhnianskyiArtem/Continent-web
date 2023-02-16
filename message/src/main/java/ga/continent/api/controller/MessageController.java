@@ -1,8 +1,8 @@
 package ga.continent.api.controller;
 
 
-import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.api.dto.MessageReadDto;
+import ga.continent.api.dto.UserChannelsDto;
 import ga.continent.service.interfaces.MessageService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
