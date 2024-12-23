@@ -30,7 +30,7 @@ spring:
       schema: classpath:session_tables.sql
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${random.value}
+    instance-id: user-service:${random.value}
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka
@@ -60,4 +60,15 @@ gateway:
 openApi:
   authorizationUrl: http://localhost:8080/oauth2/authorization/google
   tokenUrl: https://www.googleapis.com/oauth2/v4/token
+management:
+  tracing:
+    enabled: true
+    sampling.probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: liquibase, health, prometheus
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
 

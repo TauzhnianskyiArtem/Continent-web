@@ -45,7 +45,7 @@
     </v-app-bar>
     <v-main>
       <v-container>
-        <router-view></router-view>
+        <router-view :messages="messages" />
       </v-container>
     </v-main>
   </v-app>
@@ -84,8 +84,9 @@ export default {
         console.log(data)
         const index = this.messages.findIndex(item => item.id === data.body.id)
         if (index > -1)
-          if (data.eventType === 'UPDATE')
+          if (data.eventType === 'UPDATE') {
             this.messages.splice(index, 1, data.body)
+          }
           else if (data.eventType === 'REMOVE')
             this.messages.splice(index, 1)
           else

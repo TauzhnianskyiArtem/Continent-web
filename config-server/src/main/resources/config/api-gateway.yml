@@ -11,15 +11,28 @@ spring:
           predicates:
             - Path=/message/**
         - id: web
-          uri: lb://main
+          uri: lb://user
           predicates:
             - Path=/**
 
 
 eureka:
+  instance:
+    instance-id: api-gateway:${random.value}
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka
 server:
   port: 9000
 
+management:
+  tracing:
+    enabled: true
+    sampling.probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: liquibase, health, prometheus
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true

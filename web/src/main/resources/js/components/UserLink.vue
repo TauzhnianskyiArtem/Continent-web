@@ -9,7 +9,7 @@
         :size="`${size || 36}px`"
     >
       <v-img
-          :src="user.userpic"
+          :src="userPic"
           :alt="user.name"
       ></v-img>
     </v-avatar>
@@ -28,12 +28,10 @@ export default {
   computed: {
     userName() {
       return this.user.name
+    },
+    userPic() {
+      return setSrcUserpic(this.user);
     }
-  },
-  beforeMount() {
-    const usrpic = setSrcUserpic(this.user);
-    console.log(usrpic)
-    this.user.userpic = usrpic
   }
 }
 </script>

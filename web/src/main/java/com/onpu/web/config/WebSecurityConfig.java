@@ -23,7 +23,7 @@ public class WebSecurityConfig {
         http
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/","/auth", "/login**", "/js/**", "/error**", "/oauth2/**").permitAll()
+                .antMatchers("/","/auth", "/login**", "/js/**", "/error**", "/oauth2/**", "/actuator/**").permitAll()
                 .anyRequest().authenticated()
                 .and().logout().logoutSuccessUrl("/").permitAll()
                 .and()

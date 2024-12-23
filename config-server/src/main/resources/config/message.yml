@@ -33,9 +33,20 @@ grpc:
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${random.value}
+    instance-id: message-service:${random.value}
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka
 server:
-  port: 9090
+  port: 9094
+management:
+  tracing:
+    enabled: true
+    sampling.probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: liquibase, health, prometheus
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true

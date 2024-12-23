@@ -20,12 +20,12 @@ import java.util.Optional;
 @Service
 public class LoggedMessageService implements MessageService {
 
-    MessageService cachedMessageService;
+    MessageService messageServiceImpl;
 
     @Override
     public List<MessageReadDto> findForChannels(UserChannelsDto userChannelDto) {
         log.info("Messages for user:" + userChannelDto.getUserId());
-        return cachedMessageService.findForChannels(userChannelDto);
+        return messageServiceImpl.findForChannels(userChannelDto);
     }
 
     @Override
@@ -33,14 +33,14 @@ public class LoggedMessageService implements MessageService {
         log.info("Message id: " + messageId);
         log.info("Message new text: " + message.getText());
 
-        return cachedMessageService.updateMessage(messageId, message);
+        return messageServiceImpl.updateMessage(messageId, message);
     }
 
     @Override
     public boolean deleteMessage(String messageId) {
         log.info("Message id for delete:" + messageId);
 
-        return cachedMessageService.deleteMessage(messageId);
+        return messageServiceImpl.deleteMessage(messageId);
     }
 
 
@@ -50,14 +50,14 @@ public class LoggedMessageService implements MessageService {
         log.info("User id: " + message.getAuthor().getId());
         log.info("Message text: " + message.getText());
 
-        return cachedMessageService.createMessage(message);
+        return messageServiceImpl.createMessage(message);
     }
 
     @Override
     public Optional<MessageEntity> findById(String messageId) {
         log.info("Find Message by id: " + messageId);
 
-        return cachedMessageService.findById(messageId);
+        return messageServiceImpl.findById(messageId);
     }
 
 }

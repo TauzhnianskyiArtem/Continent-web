@@ -29,23 +29,21 @@ export default {
     MessageRow,
     MessageForm
   },
+  props: ['messages'],
   data() {
     return {
       message: null,
-      messages: [],
       prefixUser: '',
       prefixText: ''
     }
   },
   computed: {
     filteredMessages() {
-      return this.messages.filter(message => message.author.name.toLowerCase().includes(this.prefixUser.toLowerCase()) && message.text.toLowerCase().includes(this.prefixText.toLowerCase()))
+      return this.messages.filter(message => message.author.name.toLowerCase().includes(this.prefixUser.toLowerCase()) && message.text.toLowerCase().includes(this.prefixText.toLowerCase()) && message.author.id !== frontendData.profile.id)
     }
   },
   beforeMount() {
-    console.log(this.messages)
-    this.messages = frontendData.messages.filter(message => message.author.id !== frontendData.profile.id)
-    console.log(this.messages)
+    this.messages = this.messages.filter(message => message.author.id !== frontendData.profile.id)
   }
 }
 </script>

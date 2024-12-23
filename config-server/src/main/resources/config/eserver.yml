@@ -6,4 +6,14 @@ eureka:
       defaultZone: http://localhost:8081/eureka
 server:
   port: 8081
-
+management:
+  tracing:
+    enabled: true
+    sampling.probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: liquibase, health, prometheus
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true

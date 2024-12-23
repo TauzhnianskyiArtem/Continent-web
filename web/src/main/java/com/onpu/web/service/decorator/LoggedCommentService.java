@@ -29,8 +29,8 @@ public class LoggedCommentService implements CommentService {
     }
 
     @Override
-    public void deleteComment(String commentId) {
+    public void deleteComment(String commentId, String messageId) {
         log.info("Comment id for delete:" + commentId);
-        commentServiceImpl.deleteComment(commentId);
+        commentServiceImpl.deleteComment(commentId, messageId);
     }
 }

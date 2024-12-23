@@ -5,5 +5,5 @@ import com.onpu.web.api.dto.CommentDto;
 public interface CommentService {
     CommentDto create(CommentDto comment);
 
-    void deleteComment(String commentId);
+    void deleteComment(String commentId, String messageId);
 }

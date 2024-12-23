@@ -38,7 +38,8 @@ export default {
   props: ['comments', 'messageId', "authorId"],
   methods: {
     deleteComment(comment) {
-      commentsApi.remove(comment.id).then(result => {
+      console.log(comment)
+      commentsApi.remove(comment.id, this.messageId).then(result => {
         if (result.ok) {
           const index = this.comments.findIndex(item => item.id === comment.id)
           if (index > -1)

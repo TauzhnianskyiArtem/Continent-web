@@ -1,6 +1,6 @@
 spring:
   application:
-    name: main
+    name: user
   config:
     import: "optional:configserver:"
     fail-fast: true

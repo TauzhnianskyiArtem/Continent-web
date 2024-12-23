@@ -18,10 +18,10 @@ export default {
     MessageRow,
     MessageForm
   },
+  props: ['messages'],
   data() {
     return {
       message: null,
-      messages: [],
     }
   },
   methods: {
@@ -40,7 +40,7 @@ export default {
     }
   },
   beforeMount() {
-    this.messages = frontendData.messages.filter(message => message.author.id === frontendData.profile.id)
+    this.messages = this.messages.filter(message => message.author.id === frontendData.profile.id)
   }
 }
 </script>

@@ -53,11 +53,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void deleteComment(String commentId) {
+    public void deleteComment(String commentId, String messageId) {
         CommentDto commentDto = CommentDto.builder()
                 .id(commentId)
                 .eventType(EventType.REMOVE)
+                .message(messageId)
                 .build();
         kafkaTemplate.send(topicsProperties.getComment(), gson.toJson(commentDto));
+        wsSender.accept(EventType.REMOVE, commentDto);
+
     }
 }

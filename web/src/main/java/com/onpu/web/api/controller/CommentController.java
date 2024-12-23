@@ -37,8 +37,8 @@ public class CommentController {
         return loggedCommentService.create(comment);
    }
 
-    @DeleteMapping("{comment_id}")
-    public void deleteComment(@PathVariable("comment_id") String commentId) {
-        loggedCommentService.deleteComment(commentId);
+    @DeleteMapping("{commentId}/message/{messageId}")
+    public void deleteComment(@PathVariable String commentId, @PathVariable String messageId) {
+        loggedCommentService.deleteComment(commentId, messageId);
     }
 }
